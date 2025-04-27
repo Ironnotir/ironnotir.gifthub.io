@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BoyWithUke - Trang Nghệ Sĩ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background: #f0f8ff;
+            color: #111;
+        }
+        header {
+            background: linear-gradient(180deg, #000, #8b0000);
+            color: white;
+            padding: 0;
+            position: relative;
+        }
+        .cover-photo {
+            height: 250px;
+            width: 100%;
+            background-image: url('images/burnout-album-cover.jpg'); /* Đây là nơi bạn sẽ đặt ảnh bìa album Burn Out */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .profile-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+        }
+        .profile-info {
+            display: flex;
+            padding: 20px 0;
+        }
+        .profile-pic-container {
+            position: relative;
+            margin-top: -80px;
+            z-index: 2;
+            flex-shrink: 0;
+        }
+        .profile-pic {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #8b0000;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .name-bio {
+            margin-left: 20px;
+            align-self: flex-end;
+            padding-bottom: 5px;
+        }
+        .name-bio h1 {
+            margin: 0 0 5px 0;
+        }
+        .name-bio p {
+            margin: 0;
+            opacity: 0.9;
+        }
+        .profile-stats {
+            display: flex;
+            margin: 15px 0;
+            gap: 20px;
+        }
+        .stat {
+            text-align: center;
+            padding: 0 15px;
+            border-right: 1px solid rgba(255,255,255,0.3);
+        }
+        .stat:last-child {
+            border-right: none;
+        }
+        .stat:first-child {
+            padding-left: 0;
+        }
+        .stat-number {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .stat-label {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+        .profile-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 5px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 8px 20px;
+            background: #ff0000;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: background 0.3s;
+            font-size: 0.9rem;
+        }
+        .btn:hover {
+            background: #cc0000;
+        }
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+        }
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        main {
+            padding: 30px 20px;
+            background: #f0f8ff;
+        }
+        section {
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .section-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        h3 {
+            color: #444;
+        }
+        .discography {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .album {
+            text-align: center;
+        }
+        .album img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .album-title {
+            margin: 8px 0 3px 0;
+            font-weight: bold;
+        }
+        .album-year {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background: #222;
+            color: white;
+        }
+        .artist-links {
+            margin-top: 20px;
+        }
+        .artist-btn {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background: #ff0000;
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        .artist-btn:hover {
+            background: #cc0000;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        .social-link {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .social-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Media query for mobile responsiveness */
+        @media (max-width: 600px) {
+            .profile-info {
+                flex-direction: column;
+                align-items: center;
+            }
+            .profile-pic-container {
+                margin-top: -60px;
+            }
+            .profile-pic {
+                width: 120px;
+                height: 120px;
+            }
+            .name-bio {
+                margin-left: 0;
+                text-align: center;
+                padding-top: 10px;
+            }
+            .profile-stats {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="cover-photo"></div>
+        <div class="profile-container">
+            <div class="profile-info">
+                <div class="profile-pic-container">
+                    <img src="images/boywithuke-yt-profile.jpg" alt="BoyWithUke" class="profile-pic"> </div>
+                <div class="name-bio">
+                    <h1>BoyWithUke</h1>
+                    <p>Nhạc sĩ/Nghệ sĩ · 18 triệu người theo dõi</p>
+                    <div class="profile-stats">
+                        <div class="stat">
+                            <div class="stat-number">18M</div>
+                            <div class="stat-label">Người theo dõi</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">3.5B</div>
+                            <div class="stat-label">Lượt phát trực tuyến</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">22</div>
+                            <div class="stat-label">Đĩa đơn</div>
+                        </div>
+                    </div>
+                    <div class="profile-actions">
+                        <a href="#" class="btn">Theo dõi</a>
+                        <a href="#" class="btn btn-secondary">Nhắn tin</a>
+                        <a href="albums.html" class="btn">Xem Album</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section>
+            <div class="section-title">
+                <h2>Về BoyWithUke</h2>
+            </div>
+            <p>BoyWithUke là một ca sĩ, nhạc sĩ và nhà sản xuất âm nhạc nổi lên với những sáng tác độc đáo dựa trên ukulele và lời bài hát đầy cảm xúc. Với danh tính ẩn sau chiếc mặt nạ, anh nhanh chóng nổi tiếng nhờ tài năng thô mộc và sự thể hiện chân thật.</p>
+            <p>Sinh năm 2002 tại Massachusetts, anh bắt đầu sáng tác nhạc trong phòng ngủ của mình, chỉ với một cây ukulele, một chiếc máy tính xách tay và giọng hát đặc trưng. Nghệ danh của anh trực tiếp phản ánh hình tượng của mình—một chàng trai với cây ukulele—nhấn mạnh sự đơn giản và chân thực hơn là vẻ bề ngoài.</p>
+        </section>
+
+        <section>
+            <h2>Nguồn gốc & Sự nghiệp ban đầu</h2>
+            <p>BoyWithUke bắt đầu đăng tải nhạc trên TikTok trong đại dịch COVID-19 vào năm 2020. Vẻ ngoài đặc trưng của anh—một chiếc mặt nạ che giấu danh tính—tạo thêm sự bí ẩn cho hình tượng của mình, đồng thời cho phép người nghe tập trung hoàn toàn vào âm nhạc của anh. Ban đầu sáng tác nhạc như một cách để xử lý cảm xúc, anh đã thu hút được sự chú ý khi bài hát "Toxic" của anh lan truyền trên TikTok vào năm 2021.</p>
+            <p>Nhạc sĩ đeo mặt nạ đã phát hành các tác phẩm đầu tay của mình một cách độc lập trước khi thu hút sự chú ý của các hãng thu âm lớn. Cách tiếp cận DIY (tự làm) trong sản xuất âm nhạc của anh đã gây được tiếng vang với những người hâm mộ đánh giá cao âm thanh chân thực và lời bài hát gần gũi về sức khỏe tinh thần, các mối quan hệ và những đấu tranh cá nhân.</p>
+        </section>
+
+        <section>
+            <h2>Đỉnh cao danh vọng</h2>
+            <p>Sau thành công lan tỏa của "Toxic," bài hát đã thu về hàng trăm triệu lượt nghe trên các nền tảng, BoyWithUke đã ký hợp đồng với Republic Records vào cuối năm 2021. Sự hợp tác này đã giúp anh phát hành EP đột phá "Melatonin Dreams," tiếp theo là album phòng thu đầu tay "Serotonin Dreams" vào năm 2022.</p>
+            <p>Sự hợp tác của anh với Blackbear trong "IDGAF" càng củng cố vị thế của anh trong ngành công nghiệp âm nhạc, thể hiện khả năng làm việc với các nghệ sĩ đã thành danh trong khi vẫn duy trì âm thanh đặc trưng của mình. Trong suốt năm 2022 và 2023, anh tiếp tục phát hành các đĩa đơn và EP liên tục kết nối với lượng người hâm mộ ngày càng tăng của mình.</p>
+        </section>
+
+        <section>
+            <h2>Phong cách âm nhạc</h2>
+            <p>Âm nhạc của BoyWithUke pha trộn các yếu tố của indie pop, bedroom pop và lo-fi hip-hop, tạo ra một âm thanh vừa hiện đại vừa độc đáo. Các bài hát của anh thường có ukulele, nhịp điệu điện tử và phong cách hát đặc trưng của anh, chuyển đổi giữa hát du dương và đôi khi là những đoạn rap.</p>
+            <p>Về mặt ca từ, tác phẩm của anh khám phá các chủ đề về sự cô đơn, lo lắng, tan vỡ và khám phá bản thân một cách chân thật đáng kinh ngạc. Sự dễ bị tổn thương này, kết hợp với giai điệu hấp dẫn và nội dung gần gũi, đã giúp anh xây dựng được một lượng người hâm mộ trung thành ở nhiều thế hệ khác nhau.</p>
+        </section>
+
+        <section>
+            <h2>Lộ diện khuôn mặt & Sự phát triển</h2>
+            <p>Trong một khoảnh khắc quan trọng của sự nghiệp, BoyWithUke đã tiết lộ khuôn mặt của mình vào năm 2023, rũ bỏ sự ẩn danh vốn là một phần định hình nên hình tượng nghệ sĩ của anh. Bước đi táo bạo này đánh dấu một chương mới trong sự nghiệp của anh, cho phép anh kết nối cá nhân hơn với người hâm mộ đồng thời mở rộng chân trời sáng tạo của mình.</p>
+            <p>Kể từ khi lộ diện, anh tiếp tục phát triển về mặt âm nhạc, thử nghiệm với nhiều âm thanh đa dạng hơn trong khi vẫn giữ đúng phong cách viết nhạc nội tâm đã mang lại cho anh sự công nhận ban đầu. Sự sẵn sàng phát triển và thay đổi một cách công khai thể hiện cam kết của anh đối với sự thể hiện nghệ thuật chân chính.</p>
+        </section>
+
+        <section>
+            <h2>Tuyển tập đáng chú ý</h2>
+            <div class="discography">
+                <div class="album">
+                    <img src="images/serotonin-dreams.jpg" alt="Serotonin Dreams">
+                    <div class="album-title">Serotonin Dreams</div>
+                    <div class="album-year">2022</div>
+                </div>
+                <div class="album">
+                    <img src="images/melatonin-dreams.jpg" alt="Melatonin Dreams">
+                    <div class="album-title">Melatonin Dreams</div>
+                    <div class="album-year">2021</div>
+                </div>
+                <div class="album">
+                    <img src="images/fever-dreams.jpg" alt="Fever Dreams">
+                    <div class="album-title">Fever Dreams</div>
+                    <div class="album-year">2023</div>
+                </div>
+                <div class="album">
+                    <img src="images/antisocial.jpg" alt="Antisocial">
+                    <div class="album-title">Antisocial</div>
+                    <div class="album-year">2024</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Tầm ảnh hưởng & Di sản</h2>
+            <p>Mặc dù mới nổi lên gần đây, BoyWithUke đã để lại dấu ấn đáng kể trong ngành công nghiệp âm nhạc. Anh đại diện cho một thế hệ nghệ sĩ mới tận dụng mạng xã hội để xây dựng sự nghiệp độc lập trước khi tham gia vào các cấu trúc công nghiệp âm nhạc truyền thống.</p>
+            <p>Câu chuyện thành công của anh khuyến khích các nhạc sĩ đầy tham vọng tập trung vào sự thể hiện chân thật hơn là những con đường thành công thông thường. Bằng cách ưu tiên sự chân thành về mặt cảm xúc và quyền kiểm soát sáng tạo, anh đã xây dựng một sự nghiệp bền vững, gây được tiếng vang sâu sắc với khán giả của mình.</p>
+        </section>
+    </main>
+
+    <footer>
+        <h3>Kết nối với BoyWithUke</h3>
+        <div class="social-links">
+            <a href="https://open.spotify.com/artist/1Cd373x8qzC7SNUg5IToqp" class="social-link">Spotify</a>
+            <a href="https://www.youtube.com/@boywithukeofficial" class="social-link">YouTube</a>
+            <a href="https://www.instagram.com/boywithuke/" class="social-link">Instagram</a>
+            <a href="https://www.tiktok.com/@boywithuke" class="social-link">TikTok</a>
+        </div>
+
+        <h3>Khám phá các nghệ sĩ tương tự:</h3>
+        <div class="artist-links">
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="artist-btn">Powfu</a>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="artist-btn">Oliver Tree</a>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="artist-btn">Tate McRae</a>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="artist-btn">NF</a>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="artist-btn">Alec Benjamin</a>
+        </div>
+        <p style="margin-top: 20px; font-size: 0.8rem;">© 2025 Trang hâm mộ BoyWithUke | Trang web này không liên kết với BoyWithUke hoặc công ty quản lý của anh ấy</p>
+    </footer>
+</body>
+</html>
